@@ -7,7 +7,7 @@
 #define ORIGIN_POINT_X 400
 #define ORIGIN_POINT_Y -200
 #define INPUT_FRAME_ACCELERATION 100
-#define DEFAULT_COLLISION_BOUND_XY 0.50f
+#define DEFAULT_COLLISION_BOUND_XY 0.5f
 #define actorTest 0 // Limit for 90 fps at 100 block : 70
 #define cullingRender 13 // 8 for pretty effect // 20 = whole screen
 #define cullingUpdate 8  // 12 for pretty effect
