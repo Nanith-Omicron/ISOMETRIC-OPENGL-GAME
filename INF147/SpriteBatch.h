@@ -48,8 +48,8 @@ public:
 	void draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth, glm::vec4 color, float angle);
 	void draw(const glm::vec4& destRect, const glm::vec4& uvRect, GLuint texture, float depth,  glm::vec4 color, const glm::vec2& dir);
 	void renderBatch();
-	float zoom = 1;
-	glm::vec2 Camera;
+	float zoom = 1.5f;
+	glm::vec2 Camera = glm::vec2(0);
  
 private:
 

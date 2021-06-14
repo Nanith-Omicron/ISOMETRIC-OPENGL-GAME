@@ -5,6 +5,10 @@
 #include "Game.h"
 #include "ressourceManager.hpp"
 
+#define Max_FPS 60
+
+
+
 
 void framebuffer_size_callback(GLFWwindow* window, int width, int height);
 void key_callback(GLFWwindow* window, int key, int scancode, int action, int mode);
@@ -59,10 +63,14 @@ int main(void)
 		float currentFrame = glfwGetTime();
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
-		float totalDelta = (float)deltaTime / (1000/60.0f);
+		float totalDelta = (float)deltaTime / (1000/ Max_FPS);
+		
+		
 		glfwPollEvents();
 		double xpos, ypos;
 		glfwGetCursorPos(window, &xpos, &ypos);
+
+
 		Theater.mouseX = xpos; Theater.mouseY = ypos;
 		Theater.ClickL = glfwGetMouseButton(window, 0);
 		Theater.ClickR = glfwGetMouseButton(window, 1);
@@ -78,9 +86,6 @@ int main(void)
 		}
 	
 
-		glClearColor(0, 0, 0, 1.0f);
-		//glClearColor(0.1, 0.3, 0.7, 1.0f);
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 		Theater.Render(deltaTime);
 

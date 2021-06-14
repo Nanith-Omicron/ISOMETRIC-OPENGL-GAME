@@ -15,8 +15,6 @@ Grid::Grid(int w, int h, int cs): width(w), height(h),cellSize(cs)
 		cells[i].y = y;
 	}
 
-
-
 }
 
 Grid::~Grid()

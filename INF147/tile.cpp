@@ -159,7 +159,7 @@ void  tile::Draw(SpriteBatch & renderer, bool selected) {
 	float qw = 1;
 	p.y -= (Z - ZFloof);
 	if (GHOSTLY)c * .3f;
-	if (invisibleByProximity && alpha != 0 && !alwaysProximityVisible)qw = 3.7 - alpha*4;
+	if (invisibleByProximity && alpha != 0 && !alwaysProximityVisible)qw = 3.7f - 4 * alpha ;
 	if (qw < .4)qw = 0;
 	if (selected || this->selected) {/* p.y += 20;*/ c *= 0.3f; }
  	if (justInvisible)qw = 0;

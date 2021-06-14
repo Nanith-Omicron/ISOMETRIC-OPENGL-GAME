@@ -58,6 +58,7 @@ Direction performer::getDirection()
 	return Last_Direction;
 
 }
+//TODO, USELESS
 void performer::setInputDir(glm::vec2 v)
 {
 	input_Dir = v;
@@ -100,8 +101,11 @@ Direction testDir;
 
 void performer::Move(glm::vec2 v, float dt)
 {
-	Sight.x = (v.x - v.y) / 2;
-	Sight.y = (v.x + v.y) / 2;
+	 Sight.x = (v.x - v.y) / 2;
+	 Sight.y = (v.x + v.y) / 2;
+	 
+ 
+
 	bool isZero = Sight.y == 0 && Sight.x == 0;
 	Direction dir = getDirection();
 	vel += glm::vec3(v * speed, 0);
@@ -144,7 +148,7 @@ void performer::Move(glm::vec2 v, float dt)
 
 void performer::Jump(float dt)
 {
-	 
+ 
 	 if (Z < -15) vel.z += 60;
 	if (!isOnGround|| NRJ == 0 || jump_Timer < jump_Delay 
 		|| time_On_Ground < .006) return;
