@@ -86,7 +86,7 @@ class performer : public actor {
 public:
 
 	performer();
-	performer(glm::vec2 pos, glm::vec2 siz, Texture2D spr, glm::vec3 color = glm::vec3(1.0f), glm::vec2 velocity = glm::vec2(0.0f, 0.0f), LAYER lay = PHYSICAL)
+	performer(glm::vec2 pos, glm::vec2 siz, Texture2D   spr, glm::vec3 color = glm::vec3(1.0f), glm::vec2 velocity = glm::vec2(0.0f, 0.0f), LAYER lay = PHYSICAL)
 		:actor(pos, siz, spr)
 	{
 
@@ -107,7 +107,7 @@ public:
 	}
 
 	std::vector<animation> Animations;
-	Texture2D spr_default;
+	Texture2D  spr_default;
 	glm::vec2 Sight;
 	int frameRate = 100;
 	glm::vec2 input_Dir;

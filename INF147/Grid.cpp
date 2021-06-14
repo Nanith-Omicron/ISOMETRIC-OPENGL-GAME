@@ -1,5 +1,7 @@
 #include "Grid.h"
 
+
+
 Grid::Grid(int w, int h, int cs): width(w), height(h),cellSize(cs)
 {
 	numXCells = (int)ceil((float)width / cellSize);
@@ -21,6 +23,7 @@ Grid::~Grid()
 {
 }
 
+  
 void Grid::addPrimitive(actor* p)
 {
 	Cell* cell = getCell(p->localPos());
@@ -31,6 +34,7 @@ void Grid::addPrimitive(actor* p)
 
 
 }
+
 
 void Grid::addPrimitives(std::vector<actor*>& p)
 {
@@ -49,8 +53,6 @@ void Grid::addPrimitives(std::vector<actor*>& p)
 	}
 
 }
-
- 
 
 void Grid::addPrimitive(actor* p, Cell *c)
 {
@@ -108,6 +110,7 @@ void Grid::refresh(std::vector<actor*>* p)
 
 
 }
+
 void Grid::refresh(std::vector<actor*>* p, actor * player)
 {
 

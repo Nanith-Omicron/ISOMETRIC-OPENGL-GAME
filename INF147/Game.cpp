@@ -26,7 +26,7 @@
 #define str std::string
 #define rsm ResourceManager::
 
-SpriteRenderer* Renderer;
+ 
 SpriteBatch spriteBatch;
 TextRenderer* Text;
 
@@ -63,7 +63,7 @@ performer* quickPerformer(int q) {
 
 
 	auto wq = new performer(glm::vec2(400 + rand() % 2000, rand() % 2000), glm::vec2(100, 134.6), 
-		ResourceManager::GetTexture("frag"), glm::vec3(.5, .5, 1));
+		 ResourceManager::GetTexture("frag"), glm::vec3(.5, .5, 1));
 	wq->platZ = 0;
 	wq->Z = 500;
 	wq->zDepthOffset = 172;//400;
@@ -192,8 +192,7 @@ void ShadersInit() {
 //Graphics setup of Game. Setup the Shaders and load the textures
 void setupGraphics() {
 
-	//Create a new renderer
-	Renderer = new SpriteRenderer();
+ 
 	//Initialize the shaders
 	ShadersInit();
 	//Load all the textures : TODO, Make it automatic based on what's in the /textures/folder

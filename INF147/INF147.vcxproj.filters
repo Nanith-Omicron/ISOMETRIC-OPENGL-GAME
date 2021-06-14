@@ -39,16 +39,7 @@
     <ClCompile Include="Game.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="spriteRenderer.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="actor.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="rect.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="physics.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="tile.cpp">
@@ -61,9 +52,6 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="primitive.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="batch.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="SpriteBatch.cpp">
@@ -141,22 +129,13 @@
     <ClInclude Include="common\ressourceManager.h">
       <Filter>Source Files\shader</Filter>
     </ClInclude>
-    <ClInclude Include="spriteRenderer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="sprite.frag">
       <Filter>Source Files\shader</Filter>
     </ClInclude>
     <ClInclude Include="actor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Physics.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="performer.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="rect.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="tile.h">

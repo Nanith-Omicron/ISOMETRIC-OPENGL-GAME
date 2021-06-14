@@ -17,7 +17,7 @@ public:
 	rect(glm::vec2 pos, glm::vec2 siz, void* so(rect a, rect b), actor* a = nullptr, bool collision = true);
 	//In case we want more deffinition in our solver, otherwise, just use AABB
 	void hasCollisionWith(rect b);
-	void (*Solver(rect a, rect b))(void);
+ 
 	//Events to fire up when entering , While colliding, and exiting the rect;
 	void (*EventCollideEnter)(), (*EventCollide)(), (*EventCollideExit)();
 

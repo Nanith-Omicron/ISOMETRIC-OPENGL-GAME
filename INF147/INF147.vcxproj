@@ -157,7 +157,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="actor.cpp" />
-    <ClCompile Include="batch.cpp" />
     <ClCompile Include="C:\GL\glad\src\glad.c" />
     <ClCompile Include="common\ressourceManager.cpp" />
     <ClCompile Include="Game.cpp" />
@@ -169,13 +168,10 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="NRJ_FX.cpp" />
     <ClCompile Include="performer.cpp" />
-    <ClCompile Include="physics.cpp" />
     <ClCompile Include="primitive.cpp" />
     <ClCompile Include="P_fx.cpp" />
-    <ClCompile Include="rect.cpp" />
     <ClCompile Include="shader.cpp" />
     <ClCompile Include="SpriteBatch.cpp" />
-    <ClCompile Include="spriteRenderer.cpp" />
     <ClCompile Include="textrenderer.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="tile.cpp" />
@@ -202,15 +198,12 @@
     <ClInclude Include="NRJ_FX.h" />
     <ClInclude Include="n_tile.h" />
     <ClInclude Include="performer.h" />
-    <ClInclude Include="Physics.h" />
     <ClInclude Include="primitive.h" />
     <ClInclude Include="P_fx.h" />
     <ClInclude Include="Quadtree.h" />
-    <ClInclude Include="rect.h" />
     <ClInclude Include="shader.h" />
     <ClInclude Include="sprite.frag" />
     <ClInclude Include="SpriteBatch.h" />
-    <ClInclude Include="spriteRenderer.h" />
     <ClInclude Include="stbi.h" />
     <ClInclude Include="textrenderer.h" />
     <ClInclude Include="texture.h" />

@@ -2,15 +2,15 @@
 
 void UI_BAR::resize(float w)
 {
-	size = w;
-	if (size > 1)size = 1;
-	if (size < 0)size = 0;
+	ui_ratio = w;
+	if (ui_ratio > 1)ui_ratio = 1;
+	if (ui_ratio < 0)ui_ratio = 0;
 }
 
 void UI_BAR::Draw(SpriteBatch& renderer, bool selected)
 {
 	 
-	if (size < 0)size = 0;
+	if (ui_ratio < 0)ui_ratio = 0;
 	if (!show)return;
 	glm::vec2 p = this->pos;
  
@@ -25,7 +25,7 @@ void UI_BAR::Draw(SpriteBatch& renderer, bool selected)
 		glm::vec4(0.0f, 0.0f, 1.0f, 1.0f),
 		Start.ID, 9999999999, col);
 	
-	float si = (((Back.Width - Mid.Width + 1) * size * scale)) -( End.Width  + Start.Width ) * scale    ;
+	float si = (((Back.Width - Mid.Width + 1) * ui_ratio * scale)) -( End.Width  + Start.Width ) * scale    ;
 	if (si < 0)si = 0;
 	float start = sTa + Start.Width * scale/2 + si/2;
 	float end = start + si -si/2;

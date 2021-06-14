@@ -67,11 +67,10 @@ void performer::animate(float dt)
 {
 	if (!animated || Animations.size() <= 0)return;
 	if (frameRate < 0)frameRate = 1;
-	float f = 0.07f / (frameRate );
 	
+	float f = 0.07f / (frameRate );
+
 	timer += dt;
-	/*printf("time %3.5f", timer);
-	printf("vs %3.5f \n", f);*/
 	if (timer > f) {
 		timer = 0;
 		img = Animations[cur_Animation_ID].currentFrame();
@@ -103,8 +102,6 @@ void performer::Move(glm::vec2 v, float dt)
 {
 	 Sight.x = (v.x - v.y) / 2;
 	 Sight.y = (v.x + v.y) / 2;
-	 
- 
 
 	bool isZero = Sight.y == 0 && Sight.x == 0;
 	Direction dir = getDirection();

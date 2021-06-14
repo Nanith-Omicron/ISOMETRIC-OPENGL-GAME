@@ -6,6 +6,7 @@ class item :public actor{
 
 
 public:
+
 	virtual void update(float dt);
 	virtual void onSide(actor * a);
 	virtual void use(actor* a);

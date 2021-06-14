@@ -108,7 +108,7 @@ public:
 
 
 	rect* rects;
-	Texture2D img, shadow;
+	Texture2D  img, shadow;
 	LAYER layer;
 	bool hasCollision() {
 		return numCol >= 0;
@@ -128,7 +128,7 @@ public:
 	actor() {
 
 	}
-	actor(glm::vec2 p, glm::vec2 siz, Texture2D spr, glm::vec3 col = glm::vec3(1.0f), glm::vec3 velocity = glm::vec3(0), LAYER lay = PHYSICAL)
+	actor(glm::vec2 p, glm::vec2 siz, Texture2D  spr, glm::vec3 col = glm::vec3(1.0f), glm::vec3 velocity = glm::vec3(0), LAYER lay = PHYSICAL)
 		:primitive(0, pos, 0, 0) {
 		img = spr;
 		color = col;
