@@ -200,8 +200,6 @@ void setupGraphics() {
  
 }
 
-
-
 //Setup the Game
 void Game::Init() {
  
@@ -278,8 +276,6 @@ void Game::ProcessInput(float dt) {
 	//Make the player jump on space 
 	if (Keys[GLFW_KEY_SPACE])player->Jump(dt);
 }
-
- 
 
 void debug(float dt) {
 	if ((dt) > 0) {

@@ -37,6 +37,8 @@ void performer::Drop(item* w)
 {
 	Inventory.erase(std::remove(Inventory.begin(), Inventory.end(), w), Inventory.end());
 }
+
+
 Direction performer::getDirection()
 {
 	if (Sight.x == 1 && Sight.y == 0)

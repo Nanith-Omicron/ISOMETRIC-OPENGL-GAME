@@ -87,9 +87,6 @@
     <ClCompile Include="P_fx.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="NRJ_FX.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\simplevertex.glsl">

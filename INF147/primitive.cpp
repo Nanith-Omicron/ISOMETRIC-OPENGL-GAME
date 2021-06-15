@@ -5,7 +5,6 @@
 void primitive::preCollision(actor * a)
 {
 	//printf("Primitive san");
- 
 
 }
 
