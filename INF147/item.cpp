@@ -1,5 +1,5 @@
 #include "item.h"
-
+#include "performer.h"
 
 void item::update(float dt)
 {
@@ -18,15 +18,13 @@ void item::use(actor* a)
 
 void item::onGet(actor* a)
 {
+	if (!CullByProximity)return;
 
-	printf("Player got the %s", name);
-	owner = a;
-	CullByProximity = false;
-	renderMe = false;
-	collideWithMe = false;
-	isAcollidee = false;
-	a->onSide(this);
-	//pos = glm::vec2(-90);
+	//printf("Player got the %s", name);
+
+	//a->onSide(this);
+
+
 
 }
 

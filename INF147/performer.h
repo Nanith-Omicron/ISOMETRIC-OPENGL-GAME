@@ -116,6 +116,8 @@ public:
 	bool animated = true;
 	std::vector<p_fx*> Effects;
 	std::vector<item*> Inventory;
+	
+
 	virtual void ApplyEffects(p_fx * ef) {
 		ef->OnReceived(this);
 		Effects.push_back(ef);
@@ -146,7 +148,7 @@ public:
 	virtual void Jump(float dt);
 	virtual void update(float dt);
 	virtual void update(Grid * g, float dt);
-	virtual void OnSide(actor* a);
+	virtual void onSide(actor* a);
 	virtual void Drop(item* w);
 
 	virtual  Direction getDirection();

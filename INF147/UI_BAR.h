@@ -11,6 +11,10 @@ public:
 	UI_BAR(Texture2D  S, Texture2D M, Texture2D E, Texture2D B) {
 		Start =   S; Mid =  M; End =  E; Back =   B;
 	}
+
+	UI_BAR(Texture2D  S, Texture2D M, Texture2D E ) {
+		Start = S; Mid = M; End = E; Back = M;
+	}
 	//From 0 to 1, determined the ratio at which it's completed
 	float ui_ratio = 1;
 	//Resize and clamp the bar

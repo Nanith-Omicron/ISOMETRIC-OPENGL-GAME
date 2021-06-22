@@ -21,6 +21,7 @@ public:
 	}
 	actor* owner;
 	glm::vec2 collisionBoundXY = glm::vec2(.1f), collisionBoundZ =glm::vec2(7.5f, 32.5f);
+	Texture2D UI_img;
 	float value = 100;
 	int amount = 1;
 	bool autoPickup = true;

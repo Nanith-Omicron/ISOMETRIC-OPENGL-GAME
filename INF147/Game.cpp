@@ -152,6 +152,28 @@ void loadTexture() {
 	ResourceManager::LoadTexture("textures/UI/NRJ_BAR.png", true, "NRJ_B");
 	ResourceManager::LoadTexture("textures/UI/NRJ_UP.png", true, "NRJ_UP");
 	ResourceManager::LoadTexture("textures/UI/HRT_UP.png", true, "HRT_UP");
+	
+
+	ResourceManager::LoadTexture("textures/UI/Metal_UI1.png", true, "UI_BOX_METAL_TL");
+	ResourceManager::LoadTexture("textures/UI/Metal_UI2.png", true, "UI_BOX_METAL_TM");
+	ResourceManager::LoadTexture("textures/UI/Metal_UI3.png", true, "UI_BOX_METAL_TR");
+
+	ResourceManager::LoadTexture("textures/UI/Metal_UI6.png", true, "UI_BOX_METAL_ML");
+	ResourceManager::LoadTexture("textures/UI/Metal_UI5.png", true, "UI_BOX_METAL_M");
+	ResourceManager::LoadTexture("textures/UI/Metal_UI4.png", true, "UI_BOX_METAL_MR");
+
+	ResourceManager::LoadTexture("textures/UI/Metal_UI7.png", true, "UI_BOX_METAL_LL");
+	ResourceManager::LoadTexture("textures/UI/Metal_UI8.png", true, "UI_BOX_METAL_LM");
+	ResourceManager::LoadTexture("textures/UI/Metal_UI9.png", true, "UI_BOX_METAL_LR");
+	
+	ResourceManager::LoadTexture("textures/UI/Metal_UI_TOP.png", true, "Metal_UI_TOP_S");
+	ResourceManager::LoadTexture("textures/UI/Metal_UI_TOP2.png", true, "Metal_UI_TOP_M");
+	ResourceManager::LoadTexture("textures/UI/Metal_UI_TOP3.png", true, "Metal_UI_TOP_E");
+
+
+
+	ResourceManager::LoadTexture("textures/UI/Item_Slot_Eat_Banana.png", true, "QuickUI_Banana");
+	
 
 
 	t_q("Quad_People_Walking_U_walking-1", "q_pep_walk_u-1");
@@ -209,7 +231,7 @@ void Game::Init() {
 	
 	//Setup Text
 	Text = new TextRenderer(this->Width, this->Height);
-	Text->Load("fonts/FredokaOne-Regular.ttf", 24);
+	Text->Load("fonts/VerminVibes1989Regular-m77m.ttf", 35);
 	
 	//Setup Graphis and the players
 	setupGraphics();
@@ -299,6 +321,6 @@ void Game::Render(float dt) {
 	glClearColor(0, 0, 0, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-	First.render(&spriteBatch, m_program.get());
-	debug(dt);
+	First.render(&spriteBatch,Text, m_program.get());
+	//debug(dt);
 }

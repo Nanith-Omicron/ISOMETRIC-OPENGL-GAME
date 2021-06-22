@@ -5,6 +5,11 @@ void UI::StickTo(actor * x)
 	pos = x->pos + offset;
 }
 
+void UI::setPos(float x, float y)
+{
+	pos =  glm::vec2(x, y);
+}
+
 void UI::Draw(SpriteBatch& renderer, bool selected)
 {
 	if (!show)return;

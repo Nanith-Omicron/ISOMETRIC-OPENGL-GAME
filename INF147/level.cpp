@@ -176,28 +176,30 @@ void level::init(const char* file, int Width, int Height)
 	auto banana = new item();
 	banana->name = "Banana";
 	banana->img = ResourceManager::GetTexture("big_nana");
+	banana->UI_img = ResourceManager::GetTexture("QuickUI_Banana");
 	banana->amount = 1;
 	banana->setlocalPos(28, 2);
- 
+
 	banana->value = 1;
 	banana->onDrop(0);
- banana->shadow= ResourceManager::GetTexture("shadow");
-	 
+	banana->shadow = ResourceManager::GetTexture("shadow");
+
 	Items.push_back(banana);
 
 	// NPCs.push_back(banana); //oh god no
-	
+
 	all.push_back(banana);
 	stbi_image_free(data);
 	Area->addPrimitives(all);
- 
 
 
-	 
+
+
 }
 
 void level::enter(performer * player)
 {
+	float uiScale = 4;
 	this->player = player;
 	Area->addPrimitive(player);
 	player->zDepthOffset = 210;
@@ -211,14 +213,58 @@ void level::enter(performer * player)
 		ResourceManager::GetTexture("NRJ_B"));
 
 	auto viva = new UI_Performer_Status(player, NRJ, HP);
+
+	auto box = new UI_BOX(
+		ResourceManager::GetTexture("UI_BOX_METAL_TL"),
+		ResourceManager::GetTexture("UI_BOX_METAL_TM"),
+		ResourceManager::GetTexture("UI_BOX_METAL_TR"),
+		ResourceManager::GetTexture("UI_BOX_METAL_ML"),
+		ResourceManager::GetTexture("UI_BOX_METAL_M"),
+		ResourceManager::GetTexture("UI_BOX_METAL_MR"),
+		ResourceManager::GetTexture("UI_BOX_METAL_LL"),
+		ResourceManager::GetTexture("UI_BOX_METAL_LM"),
+		ResourceManager::GetTexture("UI_BOX_METAL_LR")
+	);
+
+	 auto box2 = new UI_BOX(
+		ResourceManager::GetTexture("UI_BOX_METAL_TL"),
+		ResourceManager::GetTexture("UI_BOX_METAL_TM"),
+		ResourceManager::GetTexture("UI_BOX_METAL_TR"),
+		ResourceManager::GetTexture("UI_BOX_METAL_ML"),
+		ResourceManager::GetTexture("UI_BOX_METAL_M"),
+		ResourceManager::GetTexture("UI_BOX_METAL_MR"),
+		ResourceManager::GetTexture("UI_BOX_METAL_LL"),
+		ResourceManager::GetTexture("UI_BOX_METAL_LM"),
+		ResourceManager::GetTexture("UI_BOX_METAL_LR")
+	); 
+
+
+	 auto TOP = new UI_BOX(ResourceManager::GetTexture("Metal_UI_TOP_S"),
+		 ResourceManager::GetTexture("Metal_UI_TOP_M"),
+		 ResourceManager::GetTexture("Metal_UI_TOP_E")
+	 );
+	 TOP->resize(22,1);
+	 TOP->scale = uiScale;
+	 TOP->setPos(125, 30);
+
+	box->resize(2.3, 2.3);
+	box->scale = uiScale;
+	box->setPos(0 + 30, this->ScreenH- 110);
+	box2->resize(2.3, 2.3);
+	box2->scale = uiScale;
+	box2->setPos(0 + 50 +100, this->ScreenH - 110);
+	
 	UIs.push_back(viva);
+	UIs.push_back(box);
+	UIs.push_back(box2);
+	UIs.push_back(TOP);
 	auto brh = new NRJ_FX(ResourceManager::GetTexture("NRJ_UP"));
 	brh->isInfinite = true;
 	brh->GiveNRJat = 1;
 	player->ApplyEffects(brh);
 	player->setlocalPos(28, 5);
 	Items[0]->CullByProximity = true;
- 
+
 
 }
 void level::update(float dt)
@@ -227,10 +273,15 @@ void level::update(float dt)
 	Area.get()->refresh(&NPCs, player);
 	Area.get()->refresh(&Items, player);
 	Area.get()->updateCollision();
- 
+
 	for (int i = 0; i < all.size(); i++)	all[i]->update(dt);
 }
-
+void DrawThere(Texture2D& img, float x, float y, SpriteBatch& sp , float scale = 3) {
+	sp.draw(glm::vec4(x, y,
+		img.Width *scale, img.Height * scale),
+		glm::vec4(0.0f, 0.0f, 1.0f, 1.0f),
+		img.ID, 9999999999, glm::vec4(1));
+}
 bool level::visit(glm::vec2 p1, float l) {
 	bool t = false;
 	for (int i = 0; i < 2; i++)
@@ -242,8 +293,8 @@ bool level::visit(glm::vec2 p1, float l) {
 		tile * q = metaTile[omama]._tile;
 
 		float w = l;
-	//	if (i > 0)w = 0;
-		// if (i > 0 && player->isLowerThan(q->localPos()+ glm::vec2(-.5, -.5)))w =0;
+		//	if (i > 0)w = 0;
+			// if (i > 0 && player->isLowerThan(q->localPos()+ glm::vec2(-.5, -.5)))w =0;
 		MetaTile  re = metaTile[omama];
 		while (re.HasOnTop)
 		{
@@ -252,8 +303,8 @@ bool level::visit(glm::vec2 p1, float l) {
 		}
 		q->alpha = w;
 		if (i > 0)  t = true;
-			
-		 
+
+
 	}
 	return t;
 
@@ -290,7 +341,7 @@ void level::raytrace(glm::vec2 from, glm::vec2 there)
 }
 void level::raycastAlgorithm() {
 
-	auto e = player->localPos() - glm::vec2(-.5,-.5);
+	auto e = player->localPos() - glm::vec2(-.5, -.5);
 
 	for (size_t i = 0; i < 360; i += 1)
 	{
@@ -302,10 +353,10 @@ void level::raycastAlgorithm() {
 
 
 }
-void level::render(SpriteBatch * sp, GLSLProgram * pr)
+void level::render(SpriteBatch * sp,TextRenderer * Text, GLSLProgram * pr)
 {
 	Viewable.push_back(player);
-
+	
 	for (size_t i = 1; i < NPCs.size(); i++)
 	{
 		bool e = player->DistanceFrom(NPCs[i]) > cullingRender * cullingRender;
@@ -324,12 +375,12 @@ void level::render(SpriteBatch * sp, GLSLProgram * pr)
 	{
 		if (player->DistanceFrom(Tiles[i]) > cullingRender * cullingRender) continue;
 		// Tiles[i]->shadow(player);
-		 Tiles[i]->alpha = 0;
+		Tiles[i]->alpha = 0;
 		auto wq = Tiles[i]->pos.y - player->pos.y;
 		//Tiles[i]->invisibleByProximity =wq > -20 && Tiles[i]->Z > player->Z;
 		//
 
-		 Viewable.push_back(Tiles[i]);
+		Viewable.push_back(Tiles[i]);
 	}
 
 	raycastAlgorithm();
@@ -350,27 +401,39 @@ void level::render(SpriteBatch * sp, GLSLProgram * pr)
 	Viewable[0]->Draw(*sp, true);
 	UIs[0]->pos = player->pos;
 
-	for (size_t i = 0; i < UIs.size(); i++)
-	{
-		UIs[0]->Draw(*sp, false);
-	}
+
+	UIs[0]->Draw(*sp, false);
+
 	sp->end();
 	sp->renderBatch();
 	pr->unuse();
 	Viewable.clear();
 
 	//UI 
-	/*pr->use();
+	pr->use();
 	sp->begin(GlyphSortType::FRONT_TO_BACK);
-	m_cameraMatrix = glm::translate(ortho, glm::vec3(0,0,0));
+	m_cameraMatrix = glm::translate(ortho, glm::vec3(0, 0, 0));
 	glUniform1i(pr->getUniformLocation("mySampler"), 0);
 	glUniformMatrix4fv(pr->getUniformLocation("P"), 1, GL_FALSE, &m_cameraMatrix[0][0]);
+	for (size_t i = 1; i < UIs.size(); i++)
+	{
+		UIs[i]->Draw(*sp, false);
+	}
+	if (player->Inventory.size() > 0) {
+	DrawThere(player->Inventory[0]->UI_img, UIs[1]->pos.x + 25, UIs[1]->pos.y +25, *sp,3.5);
 
+	}
+	
 	//UIs[0]->Draw(*sp, false);
 	sp->end();
 	sp->renderBatch();
 	pr->unuse();
-	*/
+	//UI TEXT
+	Text->RenderText("X", UIs[1]->pos.x + 45, UIs[1]->pos.y + 40, 1.2F,glm::vec4(.2,.3,.6,1));
+	Text->RenderText("X", UIs[1]->pos.x + 43, UIs[1]->pos.y +36, 1.2F);
+	auto there = "CBT DUNGEON";
+	int whereIAm = sizeof(there) * 35;
+	Text->RenderText(there, ScreenW / 2 - whereIAm/2,10, 1.2F);
 }
 
 void level::exit()

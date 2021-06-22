@@ -10,7 +10,9 @@
 #include <blob.h>
 #include <GLSL.h>
 #include "glm/glm.hpp"
+
 #include <UI.h>
+#include "UI_BOX.h"
 #include "UI_Performer_status.h"
 #include <item.h>
 
@@ -44,7 +46,7 @@ public:
 	bool  visit(glm::vec2 p1, float l);
 	void raytrace(glm::vec2 from, glm::vec2 there);
 	void raycastAlgorithm();
-	virtual void render(SpriteBatch* sp, GLSLProgram * pr);
+	virtual void render(SpriteBatch* sp,TextRenderer* Text, GLSLProgram * pr);
 	virtual void exit();
 
 	std::string level_Name;

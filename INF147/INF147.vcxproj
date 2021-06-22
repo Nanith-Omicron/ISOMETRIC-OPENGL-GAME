@@ -176,6 +176,7 @@
     <ClCompile Include="tile.cpp" />
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="UI_BAR.cpp" />
+    <ClCompile Include="UI_BOX.cpp" />
     <ClCompile Include="UI_Performer_status.cpp" />
     <ClCompile Include="UI_Toggle.cpp" />
   </ItemGroup>
@@ -209,6 +210,7 @@
     <ClInclude Include="tile.h" />
     <ClInclude Include="UI.h" />
     <ClInclude Include="UI_BAR.h" />
+    <ClInclude Include="UI_BOX.h" />
     <ClInclude Include="UI_Performer_status.h" />
     <ClInclude Include="UI_Toggle.h" />
     <ClInclude Include="Vertex.h" />

@@ -26,12 +26,25 @@ void performer::update(Grid *g, float dt) {
 	animate(dt);
 	actor::update(dt);
 }
-void performer::OnSide(actor* a)
+void performer::onSide(actor* a)
 {
-	 
+	
+	
 	item* w =dynamic_cast<item*> (a);
+	
 	if (!w)return;
+ 
+	printf(w->name.c_str());
+	printf(" is in the pocket :smirk:\n");
+	w->owner = a;
+	w->CullByProximity = false;
+	w->renderMe = false;
+	w->collideWithMe = false;
+	w->isAcollidee = false;
 	Inventory.push_back(w);
+	 
+
+
 }
 void performer::Drop(item* w)
 {
@@ -77,22 +90,17 @@ void performer::animate(float dt)
 		timer = 0;
 		img = Animations[cur_Animation_ID].currentFrame();
 	}
-
-
 }
 
 
 bool performer::addAnimation(animation a)
 {
-
 	Animations.push_back(a);
-
 	return false;
 }
 //Change the animation. Return TRUE if animation has changed.
 bool performer::ChangeAnimation(int x)
 {
-
 	this->cur_Animation_ID = x;
 	Animations[cur_Animation_ID].reset_current_Frame();
 	return true;
