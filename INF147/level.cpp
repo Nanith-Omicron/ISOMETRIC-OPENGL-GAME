@@ -214,17 +214,6 @@ void level::enter(performer * player)
 
 	auto viva = new UI_Performer_Status(player, NRJ, HP);
 
-	auto box = new UI_BOX(
-		ResourceManager::GetTexture("UI_BOX_METAL_TL"),
-		ResourceManager::GetTexture("UI_BOX_METAL_TM"),
-		ResourceManager::GetTexture("UI_BOX_METAL_TR"),
-		ResourceManager::GetTexture("UI_BOX_METAL_ML"),
-		ResourceManager::GetTexture("UI_BOX_METAL_M"),
-		ResourceManager::GetTexture("UI_BOX_METAL_MR"),
-		ResourceManager::GetTexture("UI_BOX_METAL_LL"),
-		ResourceManager::GetTexture("UI_BOX_METAL_LM"),
-		ResourceManager::GetTexture("UI_BOX_METAL_LR")
-	);
 
 	 auto box2 = new UI_BOX(
 		ResourceManager::GetTexture("UI_BOX_METAL_TL"),
@@ -247,15 +236,29 @@ void level::enter(performer * player)
 	 TOP->scale = uiScale;
 	 TOP->setPos(125, 30);
 
+	 auto box = new UI_BOX(
+		 ResourceManager::GetTexture("UI_BOX_METAL_TL"),
+		 ResourceManager::GetTexture("UI_BOX_METAL_TM"),
+		 ResourceManager::GetTexture("UI_BOX_METAL_TR"),
+		 ResourceManager::GetTexture("UI_BOX_METAL_ML"),
+		 ResourceManager::GetTexture("UI_BOX_METAL_M"),
+		 ResourceManager::GetTexture("UI_BOX_METAL_MR"),
+		 ResourceManager::GetTexture("UI_BOX_METAL_LL"),
+		 ResourceManager::GetTexture("UI_BOX_METAL_LM"),
+		 ResourceManager::GetTexture("UI_BOX_METAL_LR")
+	 );
+
 	box->resize(2.3, 2.3);
 	box->scale = uiScale;
 	box->setPos(0 + 30, this->ScreenH- 110);
+	UIs.push_back(box);
+
 	box2->resize(2.3, 2.3);
 	box2->scale = uiScale;
 	box2->setPos(0 + 50 +100, this->ScreenH - 110);
 	
 	UIs.push_back(viva);
-	UIs.push_back(box);
+	
 	UIs.push_back(box2);
 	UIs.push_back(TOP);
 	auto brh = new NRJ_FX(ResourceManager::GetTexture("NRJ_UP"));
@@ -353,6 +356,9 @@ void level::raycastAlgorithm() {
 
 
 }
+
+
+
 void level::render(SpriteBatch * sp,TextRenderer * Text, GLSLProgram * pr)
 {
 	Viewable.push_back(player);

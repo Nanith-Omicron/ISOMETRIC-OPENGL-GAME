@@ -18,6 +18,13 @@ const unsigned int SCREEN_WIDTH = 1600;
 const unsigned int SCREEN_HEIGHT = 1024;
 
 Game Theater(SCREEN_WIDTH, SCREEN_HEIGHT);
+static GLFWwindow * win;
+
+void QUIT_THE_APPLICATION() {
+	printf("\nBYE BYE");
+	glfwSetWindowShouldClose(win, true);
+	
+}
 int main(void)
 {
 
@@ -34,6 +41,7 @@ int main(void)
 
 	GLFWwindow* window = glfwCreateWindow(SCREEN_WIDTH, SCREEN_HEIGHT, "Theater", nullptr, nullptr);
 	glfwMakeContextCurrent(window);
+	win = window;
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
@@ -53,7 +61,11 @@ int main(void)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 
 	glfwSwapInterval(0);//Vsync
+	Theater.State = GAME_MENU;
+	Theater.Quit = *QUIT_THE_APPLICATION;
+
 	Theater.Init();
+ 
 	float deltaTime = 0.0f;
 	float lastFrame = 0.0f;
 
@@ -71,11 +83,11 @@ int main(void)
 		glfwGetCursorPos(window, &xpos, &ypos);
 
 
-		Theater.mouseX = xpos; Theater.mouseY = ypos;
-		Theater.ClickL = glfwGetMouseButton(window, 0);
-		Theater.ClickR = glfwGetMouseButton(window, 1);
+		Theater.Cursor.rawX = xpos; Theater.Cursor.rawY = ypos;
+		Theater.Cursor.buttons[0] = glfwGetMouseButton(window, 0);
+		Theater.Cursor.buttons[1] = glfwGetMouseButton(window, 1);
 		Theater.ProcessInput(deltaTime);
-
+	
 		int i = 0;
 		while (totalDelta > 0.0f && i < 6)
 		{
@@ -115,7 +127,7 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 
 void MouseScroll_callback(GLFWwindow* window, double x, double y)
 {
-	Theater.mouseScroll = y;
+	Theater.Cursor.Scroll = y;
  
 }
 void framebuffer_size_callback(GLFWwindow * window, int width, int height)

@@ -26,7 +26,7 @@ public:
 
 };
 
-class level {
+class  level {
 	
 public:
 
@@ -47,6 +47,7 @@ public:
 	void raytrace(glm::vec2 from, glm::vec2 there);
 	void raycastAlgorithm();
 	virtual void render(SpriteBatch* sp,TextRenderer* Text, GLSLProgram * pr);
+ 
 	virtual void exit();
 
 	std::string level_Name;

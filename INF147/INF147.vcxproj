@@ -166,6 +166,7 @@
     <ClCompile Include="item.cpp" />
     <ClCompile Include="level.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="page.cpp" />
     <ClCompile Include="performer.cpp" />
     <ClCompile Include="primitive.cpp" />
     <ClCompile Include="P_fx.cpp" />
@@ -177,6 +178,7 @@
     <ClCompile Include="UI.cpp" />
     <ClCompile Include="UI_BAR.cpp" />
     <ClCompile Include="UI_BOX.cpp" />
+    <ClCompile Include="UI_BUTTON.cpp" />
     <ClCompile Include="UI_Performer_status.cpp" />
     <ClCompile Include="UI_Toggle.cpp" />
   </ItemGroup>
@@ -194,9 +196,12 @@
     <ClInclude Include="IOManager.h" />
     <ClInclude Include="item.h" />
     <ClInclude Include="level.h" />
+    <ClInclude Include="Level_Editor.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="Mouse_Info.h" />
     <ClInclude Include="NRJ_FX.h" />
     <ClInclude Include="n_tile.h" />
+    <ClInclude Include="page.h" />
     <ClInclude Include="performer.h" />
     <ClInclude Include="primitive.h" />
     <ClInclude Include="P_fx.h" />
@@ -211,6 +216,8 @@
     <ClInclude Include="UI.h" />
     <ClInclude Include="UI_BAR.h" />
     <ClInclude Include="UI_BOX.h" />
+    <ClInclude Include="UI_BUILDER.h" />
+    <ClInclude Include="UI_BUTTON.h" />
     <ClInclude Include="UI_Performer_status.h" />
     <ClInclude Include="UI_Toggle.h" />
     <ClInclude Include="Vertex.h" />
