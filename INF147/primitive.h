@@ -32,8 +32,8 @@ public:
 	}
 	glm::vec2 localPos() {
 		glm::vec2 lol;
-		lol.x = ((pos.y - ORIGIN_POINT_Y) / isoH + (pos.x - ORIGIN_POINT_X) / isoW) / ratio;
-		lol.y = ((pos.y - ORIGIN_POINT_Y) / isoH - (pos.x - ORIGIN_POINT_X) / isoW) / ratio;
+		lol.x = ((pos.y - ORIGIN_POINT_Y) / isoH + (pos.x - ORIGIN_POINT_X) / isoW) / S_ratio;
+		lol.y = ((pos.y - ORIGIN_POINT_Y) / isoH - (pos.x - ORIGIN_POINT_X) / isoW) / S_ratio;
 		return lol;
 	}
 

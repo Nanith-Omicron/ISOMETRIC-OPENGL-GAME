@@ -3,7 +3,7 @@
 #define isoW 50.0f
 #define isoH 33.5f
  
-#define ratio 2.0f
+#define S_ratio 2.0f
 #define ORIGIN_POINT_X 400
 #define ORIGIN_POINT_Y -200
 #define INPUT_FRAME_ACCELERATION 100

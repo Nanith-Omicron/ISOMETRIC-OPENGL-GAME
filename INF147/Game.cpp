@@ -3,19 +3,26 @@
 #include <GLSL.h>
 //Entities type 
 //TODO Make a component system . Performer should be the BASE entities for all  
-
-
+#include <string>
+#include <iostream>
+  
 #include "performer.h" // Animated and Game Object
 
-
-
+ 
 #include <vector>		// To store the actors;
 #include <algorithm>    // std::sort
 
+ 
+#include "boost/filesystem/operations.hpp"
+#include <boost/foreach.hpp> 
+namespace fs = boost::filesystem; 
+ 
+#include <iostream>
+
 #include "GLFW/glfw3.h"
 #include <iomanip>
-#include "SpriteBatch.h"
 
+#include "SpriteBatch.h"
 #include <iostream>
 
 #include "global.h"
@@ -24,6 +31,8 @@
 #include <Light.h>
 #include "page.h"
 
+#include <stdio.h>
+  
 #define str std::string
 #define rsm ResourceManager::
 
@@ -129,7 +138,49 @@ void setupPlayer() {
 	return;
 }
 
+void seekAllTexture() {
+
+	fs::path targetDir("./textures");
+
+	fs::directory_iterator it(targetDir), eod;
+	printf("Looking for all texture in path:\n ");
+	printf("LOADING GENERAL TEXTURE:\n\n");
+	BOOST_FOREACH(fs::path const& p, std::make_pair(it, eod))
+	{
+		if (fs::is_regular_file(p))
+		{
+		
+			printf(p.filename().string().c_str());
+			std::string le ="textures/" + p.filename().string();
+			ResourceManager::LoadTexture(le.c_str(), true, p.filename().string().c_str());
+			printf("\n");
+			// do something with p
+		}
+	}
+
+
+	fs::path xd("./textures/UI");
+
+	fs::directory_iterator qw(xd);
+	printf("\nLOADING UI:\n\n ");
+ 
+	BOOST_FOREACH(fs::path const& w, std::make_pair(qw, eod))
+	{
+		if (fs::is_regular_file(w))
+		{
+
+			printf(w.filename().string().c_str());
+			std::string le = "textures/UI/" + w.filename().string();
+			ResourceManager::LoadTexture(le.c_str(), true,w.filename().string().c_str());
+			printf("\n");
+			// do something with p
+		}
+	}
+
+}
 void loadTexture() {
+	seekAllTexture();
+
 	// load textures
 	ResourceManager::LoadTexture("textures/tile_2.png", true, "base");
 	ResourceManager::LoadTexture("textures/tile_sand.png", true, "sand");
@@ -233,15 +284,16 @@ void setupGraphics() {
 
 }
 
-void loadTestLevel()
+void Game::loadTestLevel()
 {
 	printf("/nLOADING LEVEL...");
 	//TODO Take MetaLevel instead of level.
 	//So it can load the correct map and other parameters
 	//===============   Initialize the level  =================//
-	First.init("dungeon/dungeon_prototype.png",800, 600);
+	First.init("dungeon/dungeon_prototype.png",Width, Height);
 	//====================Enter the level======================//
 	First.enter(player);
+	State = GAME_ACTIVE;
 	current = &First;
  
 }
@@ -271,7 +323,7 @@ void Game::Init() {
 	{
 	case GAME_ACTIVE:
 		printf("Game active State.\n");
-		loadLevel(&First);
+		loadTestLevel();
 		break;
 	case GAME_MENU:
 		printf("Game Menu State.\n");
@@ -336,6 +388,7 @@ void Game::ProcessInput(float dt) {
 	Cursor.localX = (Cursor.rawX - spriteBatch.Camera.x) / spriteBatch.zoom;
 	Cursor.localY = (Cursor.rawY - spriteBatch.Camera.y) / spriteBatch.zoom;
 
+	if (State != GAME_ACTIVE)return;
 	glm::vec2 player_input_dir = glm::vec2(0, 0);
 
 	//Move based on WASD		
@@ -410,4 +463,12 @@ void Game::Render(float dt) {
 	}
 
 	//debug(dt);
+}
+
+void Game::FetchDirectory()
+{
+
+
+
+
 }

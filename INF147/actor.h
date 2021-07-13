@@ -87,8 +87,8 @@ public:
 	std::vector<VFX> VisualEffects;
 	glm::vec2 relativeVel() {
 		glm::vec2 lol;
-		lol.x = ((vel.y) / isoH + (vel.x) / isoW) / ratio;
-		lol.y = ((vel.y) / isoH - (vel.x) / isoW) / ratio;
+		lol.x = ((vel.y) / isoH + (vel.x) / isoW) / S_ratio;
+		lol.y = ((vel.y) / isoH - (vel.x) / isoW) / S_ratio;
 		return lol;
 	}
 	bool operator<(const actor & x) const

@@ -6,8 +6,20 @@
 void uwu() {
 	printf("Uwu this Function pointer works \n");
 }
+
+bool menuOption;
+int cur_option = -1;
+int nextImage =0;
 void lol() {
-  }
+	printf("Trying Dungeon 1 \n");
+	menuOption = true;
+	cur_option = 1;
+   }
+void setFalse() {
+
+	cur_option = -1;
+	menuOption = false;
+}
 
 void page::init(int Width, int Height, Game * g)
 {
@@ -21,8 +33,10 @@ void page::init(int Width, int Height, Game * g)
 	int uscale = 5;
 
 	auto box = UI_BUILDER::CreateDefaultBox(Width / 2, Height / 2 + 400, 6, 5, uscale);
+ 
 
-	 
+
+ 
 	UIs.push_back(box);
  
 	int offset = 40;
@@ -64,7 +78,34 @@ void page::Render(SpriteBatch* sp, TextRenderer* Text, GLSLProgram* pr)
 	glUniformMatrix4fv(pr->getUniformLocation("P"), 1, GL_FALSE, &m_cameraMatrix[0][0]);
 	;
 
-
+	int x = 0, y = 0;
+	int x_size =0;
+	
+	int total = 0;
+	for (auto const& imap : ResourceManager::Textures)
+	{
+	
+		total++;
+		if (total > nextImage)break;
+		x++;
+		if ( x > 30) {
+			x = 0;
+			x_size = 0;
+			y++;
+		}
+		int h = 0;
+		if (total == nextImage) {
+			h = 30;
+	   }
+		auto b = imap.second;
+		x_size += b.Width * 4 + 50 ;
+		sp->draw(glm::vec4(50 + x * 50, 50 + y * 50 + h,
+			b.Width * 3, b.Height * 3),
+			glm::vec4(0.0f, 0.0f, 1.0f, 1.0f),
+			b.ID, 9999999999, glm::vec4(1));
+		total++;
+	}
+	nextImage++;
 	UI_Render(sp);
 
 	sp->end();
@@ -81,7 +122,23 @@ void page::Render(SpriteBatch* sp, TextRenderer* Text, GLSLProgram* pr)
 
 void page::Update(float dt)
 {
+	if (menuOption) {
 
+		switch (cur_option)
+		{
+		case 1:
+			setFalse();
+			current->loadTestLevel();
+
+			break;
+		default:
+			break;	
+		}
+
+
+
+	}
+	
 }
 
 void page::Update_UI(Mouse_info m)

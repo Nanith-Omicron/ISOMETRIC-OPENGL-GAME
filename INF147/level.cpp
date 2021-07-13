@@ -251,13 +251,15 @@ void level::enter(performer * player)
 	box->resize(2.3, 2.3);
 	box->scale = uiScale;
 	box->setPos(0 + 30, this->ScreenH- 110);
+
+	UIs.push_back(viva);
 	UIs.push_back(box);
 
 	box2->resize(2.3, 2.3);
 	box2->scale = uiScale;
 	box2->setPos(0 + 50 +100, this->ScreenH - 110);
-	
-	UIs.push_back(viva);
+ 
+
 	
 	UIs.push_back(box2);
 	UIs.push_back(TOP);
@@ -406,8 +408,6 @@ void level::render(SpriteBatch * sp,TextRenderer * Text, GLSLProgram * pr)
 	}
 	Viewable[0]->Draw(*sp, true);
 	UIs[0]->pos = player->pos;
-
-
 	UIs[0]->Draw(*sp, false);
 
 	sp->end();

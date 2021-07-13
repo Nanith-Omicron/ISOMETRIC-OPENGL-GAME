@@ -36,6 +36,7 @@ public:
 
 
 	}
+	void loadTestLevel();
  
 	//Initialize game state (load all shaders/textures/levels)
 	void Init();
@@ -45,4 +46,6 @@ public:
 	void Update(float dt);
 	//Render run each clock, after update
 	void Render(float dt);
+
+	void FetchDirectory();
 };
