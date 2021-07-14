@@ -96,6 +96,12 @@
     <ClCompile Include="page.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="metaItem.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Page_Editor.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <None Include="shader\simplevertex.glsl">
@@ -235,6 +241,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="UI_BUILDER.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="metaItem.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Page_Editor.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

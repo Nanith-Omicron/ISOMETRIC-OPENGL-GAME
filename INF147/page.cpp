@@ -1,15 +1,19 @@
 #include "page.h"
-#include "UI_BUILDER.h"
 
 
+ std::vector<page*>   page::Books;
+
+bool menuOption = false;
+int cur_option = -1;
+int nextImage = 0;
 
 void uwu() {
-	printf("Uwu this Function pointer works \n");
+	printf("Open Editor\n");
+	cur_option = 2;
+	menuOption = true;
 }
 
-bool menuOption;
-int cur_option = -1;
-int nextImage =0;
+
 void lol() {
 	printf("Trying Dungeon 1 \n");
 	menuOption = true;
@@ -23,6 +27,8 @@ void setFalse() {
 
 void page::init(int Width, int Height, Game * g)
 {
+	if (alreadyInit)return;
+	alreadyInit = true;
 	 W = Width;
 	 H = Height;
 	ortho = glm::ortho(0.0f, static_cast<float>(Width),
@@ -82,6 +88,7 @@ void page::Render(SpriteBatch* sp, TextRenderer* Text, GLSLProgram* pr)
 	int x_size =0;
 	
 	int total = 0;
+	/*
 	for (auto const& imap : ResourceManager::Textures)
 	{
 	
@@ -104,8 +111,8 @@ void page::Render(SpriteBatch* sp, TextRenderer* Text, GLSLProgram* pr)
 			glm::vec4(0.0f, 0.0f, 1.0f, 1.0f),
 			b.ID, 9999999999, glm::vec4(1));
 		total++;
-	}
-	nextImage++;
+	}	nextImage++;*/
+
 	UI_Render(sp);
 
 	sp->end();
@@ -127,15 +134,18 @@ void page::Update(float dt)
 		switch (cur_option)
 		{
 		case 1:
-			setFalse();
+		
 			current->loadTestLevel();
 
 			break;
+		case 2:
+			current->openPage(1, GAME_EDITOR);
+			;
 		default:
 			break;	
 		}
 
-
+		setFalse();
 
 	}
 	

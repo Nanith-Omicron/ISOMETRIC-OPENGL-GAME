@@ -166,7 +166,9 @@
     <ClCompile Include="item.cpp" />
     <ClCompile Include="level.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="metaItem.cpp" />
     <ClCompile Include="page.cpp" />
+    <ClCompile Include="Page_Editor.cpp" />
     <ClCompile Include="performer.cpp" />
     <ClCompile Include="primitive.cpp" />
     <ClCompile Include="P_fx.cpp" />
@@ -198,10 +200,12 @@
     <ClInclude Include="level.h" />
     <ClInclude Include="Level_Editor.h" />
     <ClInclude Include="Light.h" />
+    <ClInclude Include="metaItem.h" />
     <ClInclude Include="Mouse_Info.h" />
     <ClInclude Include="NRJ_FX.h" />
     <ClInclude Include="n_tile.h" />
     <ClInclude Include="page.h" />
+    <ClInclude Include="Page_Editor.h" />
     <ClInclude Include="performer.h" />
     <ClInclude Include="primitive.h" />
     <ClInclude Include="P_fx.h" />

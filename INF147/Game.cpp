@@ -5,7 +5,7 @@
 //TODO Make a component system . Performer should be the BASE entities for all  
 #include <string>
 #include <iostream>
-  
+#include "metaItem.h"
 #include "performer.h" // Animated and Game Object
 
  
@@ -30,6 +30,7 @@ namespace fs = boost::filesystem;
 
 #include <Light.h>
 #include "page.h"
+#include "Page_Editor.h"
 
 #include <stdio.h>
   
@@ -58,6 +59,7 @@ level zero;
 level First;
 
 page mainMenu;
+Page_Editor game_editor;
 //Lerp function
 float Lerp(float a, float b, float t)
 {
@@ -153,7 +155,7 @@ void seekAllTexture() {
 			printf(p.filename().string().c_str());
 			std::string le ="textures/" + p.filename().string();
 			ResourceManager::LoadTexture(le.c_str(), true, p.filename().string().c_str());
-			printf("\n");
+			printf(" -\n");
 			// do something with p
 		}
 	}
@@ -180,7 +182,7 @@ void seekAllTexture() {
 }
 void loadTexture() {
 	seekAllTexture();
-
+	
 	// load textures
 	ResourceManager::LoadTexture("textures/tile_2.png", true, "base");
 	ResourceManager::LoadTexture("textures/tile_sand.png", true, "sand");
@@ -281,6 +283,11 @@ void setupGraphics() {
 	ShadersInit();
 	//Load all the textures : TODO, Make it automatic based on what's in the /textures/folder
 	loadTexture();
+	//<Meta Items Test>
+	metaItem::LoadMetaItem();
+	/*auto e = new metaItem("Big_Nana","Banana","An unoculous big banana","big_nana");
+	metaItem::AddMetaItem(e); */
+	 
 
 }
 
@@ -314,6 +321,9 @@ void Game::Init() {
 	Text = new TextRenderer(this->Width, this->Height);
 	Text->Load("fonts/VerminVibes1989Regular-m77m.ttf", 35);
 	 
+	//Add the page to Books
+
+
 	//Setup Graphis and the players
 	setupGraphics();
 	//Setup the player
@@ -327,23 +337,23 @@ void Game::Init() {
 		break;
 	case GAME_MENU:
 		printf("Game Menu State.\n");
-		mainMenu.init(Width, Height,this);
+		
 		break;
 	case GAME_WIN:
 		printf("Game Win State.\n");
 		break;
 	case GAME_EDITOR:
 		printf("Game Editor State.\n");
-		zero.init("dungeon/new_dungeon.png", Width, Height);
-		zero.enter(player);
-		current = &zero;
+	
 		break;
 	default:
 		printf("Game Default State.\n");
 		break;
 	}
-
-
+	mainMenu.init(Width, Height, this);
+	game_editor.init(Width, Height, this);
+	page::Books.push_back(&mainMenu);
+	page::Books.push_back(&game_editor);
 	//Initialized the lerpPlayerPos to -300 for introduction effects
 	lerpPlayerPos = player->pos + glm::vec2(0, -300);
 }
@@ -374,6 +384,7 @@ void Game::Update(float dt) {
 	case GAME_WIN:
 		break;
 	case GAME_EDITOR:
+		game_editor.Update(dt);
 		break;
 	default:
 		break;
@@ -453,9 +464,9 @@ void Game::Render(float dt) {
 		First.render(&spriteBatch, Text, m_program.get());
 		break;
 	case GAME_EDITOR:
-		mainMenu.Update_UI(Cursor);
+		game_editor.Update_UI(Cursor);
 
-		mainMenu.Render(&spriteBatch, Text, m_program.get());
+		game_editor.Render(&spriteBatch, Text, m_program.get());
 		break;
 
 	default:
@@ -470,5 +481,14 @@ void Game::FetchDirectory()
 
 
 
+
+}
+
+void Game::openPage(int i, GameState w)
+{
+	 
+	page::Books[i]->init(Width, Height, this);
+	//page::Books[i]->init(Width, Height, this);
+	  State = w;
 
 }

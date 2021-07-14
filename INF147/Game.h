@@ -4,6 +4,7 @@
 #include "textrenderer.h"
 #include "Mouse_Info.h"
  
+ 
 enum GameState {
 	GAME_ACTIVE,
 	GAME_MENU,
@@ -23,7 +24,7 @@ public:
 	void (*Quit)();
 	void (*TestLoad)();
   
-
+	
 	glm::vec2 Offset;
 
 
@@ -46,6 +47,8 @@ public:
 	void Update(float dt);
 	//Render run each clock, after update
 	void Render(float dt);
-
+	
 	void FetchDirectory();
+
+	void openPage(int i, GameState w);
 };
