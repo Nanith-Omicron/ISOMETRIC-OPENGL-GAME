@@ -152,7 +152,7 @@ void seekAllTexture() {
 		if (fs::is_regular_file(p))
 		{
 		
-			printf(p.filename().string().c_str());
+			//printf(p.filename().string().c_str());
 			std::string le ="textures/" + p.filename().string();
 			ResourceManager::LoadTexture(le.c_str(), true, p.filename().string().c_str());
 			printf(" -\n");
@@ -171,7 +171,7 @@ void seekAllTexture() {
 		if (fs::is_regular_file(w))
 		{
 
-			printf(w.filename().string().c_str());
+//printf(w.filename().string().c_str());
 			std::string le = "textures/UI/" + w.filename().string();
 			ResourceManager::LoadTexture(le.c_str(), true,w.filename().string().c_str());
 			printf("\n");

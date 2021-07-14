@@ -8,10 +8,17 @@ void Page_Editor::Modify_item()
 {
 }
 
-void Page_Editor::SeeItemDataBase()
+void Page_Editor::ItemDB()
 {
 }
 
+void Page_Editor::SeeItemDataBase()
+{
+}
+void open_item_module() {
+	mOption = true;
+	cur_Op = 3;
+}
 
 bool mOption = false;
  int cur_Op = 0;
@@ -27,7 +34,11 @@ void Page_Editor::Update(float dt)
 			break;
 		case 2 :
 			current->openPage(0, GAME_MENU);
+		case 3: 
+			ItemDB();
+			break;
 		default:
+			printf("NO OPTION FOR THIS NUMBER: %d\n", cur_Op);
 			break;
 		}
 		cur_Op = -1;
@@ -55,7 +66,10 @@ void Page_Editor::init(int Width, int Height, Game* g)
  
 	UIs.push_back(UI_BUILDER::CreateDefaultBox(W / 2 - 20, H / 2 + 110, 20.8, 16, uscale));
 	UIs.push_back(UI_BUILDER::CreateDefaultBox(  300, H / 2 + 120 ,8, 13.2, uscale));
-
+	
+	auto createObj = UI_BUILDER::CreateDefaultButton(300, H / 2 + 140, uscale, "Items");
+	
+	smart_UIs.push_back(createObj);
 
 
 }

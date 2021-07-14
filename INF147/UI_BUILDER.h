@@ -25,6 +25,13 @@ public:
 		b->pos.y = y;
 		return b;
 	}
+	static UI* createQuickImage(std::string w, int x, int y, float uscale = 5) {
+		auto q = new UI();
+		q->img = ResourceManager::GetTexture(w);
+		q->pos = glm::vec2(x, y);
+		q->scale = uscale;
+		return q;
+	}
 	static UI_BOX* CreateDefaultBox(int x, int y, float sx, float sy, float scale) {
 
 		auto box = new UI_BOX(

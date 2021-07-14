@@ -183,6 +183,7 @@
     <ClCompile Include="UI_BUTTON.cpp" />
     <ClCompile Include="UI_Performer_status.cpp" />
     <ClCompile Include="UI_Toggle.cpp" />
+    <ClCompile Include="UI_WINDOW.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="actor.h" />
@@ -224,6 +225,7 @@
     <ClInclude Include="UI_BUTTON.h" />
     <ClInclude Include="UI_Performer_status.h" />
     <ClInclude Include="UI_Toggle.h" />
+    <ClInclude Include="UI_WINDOW.h" />
     <ClInclude Include="Vertex.h" />
     <ClInclude Include="VFX.h" />
   </ItemGroup>
