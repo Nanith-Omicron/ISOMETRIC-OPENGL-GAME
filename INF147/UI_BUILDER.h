@@ -3,6 +3,7 @@
 #include <string>
 class UI_BUILDER {
 public:
+
 	static UI_BUTTON * CreateDefaultButton(int x, int y,float scale,  std::string w ="", float fontsize = .8f) {
 		_box cl, ho, no;
 
@@ -48,13 +49,46 @@ public:
 		box->scale = scale;
 		box->resize(sx, sy);
 		auto cp = box->renderedSize();
-		box->pos.x = x -cp.x/2;
-		box->pos.y = y -cp.y/2;
+		box->pos.x = x - cp.x / 2;
+		box->pos.y = y - cp.y / 2;
 
 		return box;
 
 
 	}
+	static UI_BOX* CreateDefaultInsideBox(int x, int y, float sx, float sy, float scale) {
 
+		auto box = new UI_BOX(
+			ResourceManager::GetTexture("M_UI_INSIDE_1.png"),
+			ResourceManager::GetTexture("M_UI_INSIDE_2.png"),
+			ResourceManager::GetTexture("M_UI_INSIDE_3.png"),
+			ResourceManager::GetTexture("M_UI_INSIDE_4.png"),
+			ResourceManager::GetTexture("M_UI_INSIDE_5.png"),
+			ResourceManager::GetTexture("M_UI_INSIDE_6.png"),
+			ResourceManager::GetTexture("M_UI_INSIDE_7.png"),
+			ResourceManager::GetTexture("M_UI_INSIDE_8.png"),
+			ResourceManager::GetTexture("M_UI_INSIDE_9.png")
+		);
+		box->scale = scale;
+		box->resize(sx, sy);
+		box->setPos(x - box->renderedSize().x / 2, y - box->renderedSize().y / 2);
+		return box;
+
+
+	}
+	static UI_BOX* CreateTopBar(int x, int y, float sx, float sy, float scale = 5) {
+
+		auto box = new UI_BOX{
+			ResourceManager::GetTexture("Metal_UI_TOP.png"),
+			ResourceManager::GetTexture("Metal_UI_TOP2.png"),
+			ResourceManager::GetTexture("Metal_UI_TOP3.png")
+
+		};
+		box->scale = scale;
+
+		box->resize(sx, sy);	 
+		box->setPos(x - box->renderedSize().x/2, y);
+		return box;
+	}
 
 };

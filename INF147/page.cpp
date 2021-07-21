@@ -119,10 +119,19 @@ void page::Render(SpriteBatch* sp, TextRenderer* Text, GLSLProgram* pr)
 	sp->renderBatch();
 	pr->unuse();
 
+	Render_Text(Text);
 
+}
+
+void page::Render_Text(TextRenderer* Text)
+{
 	for (int i = 0; i < smart_UIs.size(); i++)
 	{
 		smart_UIs[i]->DrawText(*Text);
+	}
+	for (int i = 0; i < windows.size(); i++)
+	{
+		windows[i]->DrawText(*Text);
 	}
 }
 
@@ -154,6 +163,10 @@ void page::Update(float dt)
 void page::Update_UI(Mouse_info m)
 {
 	bool alreadSelected = false;
+	for (int i = 0; i < windows.size(); i++)
+	{
+		windows[i]->update_UI(m);
+	}
 	for (int i = 0; i <smart_UIs.size(); i++)
 	{
 		if (smart_UIs[i]->Update(m, alreadSelected))alreadSelected = true;
@@ -169,6 +182,10 @@ void page::UI_Render(SpriteBatch* sp)
  	for (int i = 0; i < smart_UIs.size(); i++)
 	{
 		smart_UIs[i]->Draw(*sp, false);
+	}
+	for (int i = 0; i < windows.size(); i++)
+	{
+		windows[i]->Draw(*sp, false);
 	}
 
 }

@@ -1,6 +1,7 @@
 #pragma once
 #include "UI_BOX.h"
-
+#include <functional>
+ 
 enum UI_BUTTON_STATE {
 	NORMAL,
 	HOVER,
@@ -11,7 +12,8 @@ enum UI_BUTTON_STATE {
 class UI_BUTTON : public UI_BOX {
 
 public:
-
+ 
+	 
 	_box norm, hov, click;
 	UI_BUTTON_STATE state;
 	double ui_size_x, ui_size_y;
@@ -25,7 +27,7 @@ public:
 
 	}
 	void (*onClick)();
-
+	std::function<void()> function;
 	
 	virtual bool Update(Mouse_info m, bool x);
 	virtual void Draw(SpriteBatch& renderer, bool selected, _box* box = NULL) override;

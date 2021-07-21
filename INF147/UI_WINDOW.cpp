@@ -2,6 +2,8 @@
 
 void UI_WINDOW::Open()
 {
+	 
+	printf(("Opened window : " + window_name + "\n" ).c_str());
 	ShowThis = true;
 }
 
@@ -32,8 +34,17 @@ void UI_WINDOW::DrawText(TextRenderer& Tx)
 		
 	if (!hasText)return;
 	Tx.RenderText(text,
-		pos.x + renderedSize().x / 2 + 24 * font_size - (text.size()) * 9 * font_size,
-		pos.y - font_size * 24 / 2, font_size, glm::vec4(.8, .8, .8, .2));
+		pos.x + renderedSize().x / 2 + 24 * font_size - (text.size()) * 9 * font_size + Text_offset.x,
+		pos.y - font_size * 24/2   * 9 + Text_offset.y, font_size, glm::vec4(.8, .8, .8, .2));
 
 
+}
+
+void UI_WINDOW::update_UI(Mouse_info m)
+{
+	hasButton = false; 
+	for (int i = 0; i < buttons.size(); i++)
+	{
+		if (buttons[i]->Update(m, hasButton))hasButton = true;
+	}
 }

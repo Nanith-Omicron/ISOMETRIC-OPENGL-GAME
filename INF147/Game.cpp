@@ -33,7 +33,8 @@ namespace fs = boost::filesystem;
 #include "Page_Editor.h"
 
 #include <stdio.h>
-  
+ 
+
 #define str std::string
 #define rsm ResourceManager::
 

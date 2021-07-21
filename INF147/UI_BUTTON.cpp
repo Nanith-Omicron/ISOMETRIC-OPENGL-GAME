@@ -1,5 +1,5 @@
 #include "UI_BUTTON.h"
-
+//TO DO, function are better
 bool UI_BUTTON::Update(Mouse_info m, bool x)
 {
 	bool UseClick = state == CLICKED;
@@ -17,12 +17,17 @@ bool UI_BUTTON::Update(Mouse_info m, bool x)
 				state = CLICKED;
 				if (!UseClick && onClick != NULL) {
 					onClick();
+
+					return true;
+				}
+				if (!UseClick && function != NULL) {
+					function();
 					return true;
 				}
 			}
 			else if (m.buttons[1])state = RIGHT_CLICKED;
 			else state = HOVER;
-			
+
 
 		}
 	return state != NORMAL;
@@ -63,4 +68,4 @@ void UI_BUTTON::Draw(SpriteBatch& renderer, bool selected, _box* box)
 
 }
 
- 
+

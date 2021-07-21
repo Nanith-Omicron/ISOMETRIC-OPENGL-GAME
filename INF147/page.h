@@ -8,6 +8,7 @@
 #include "textrenderer.h"
 #include "GLSL.h"
 #include "UI_BUILDER.h"
+#include "UI_WINDOW.h"
 class page {
 	UI_BUTTON * test_Buttons;
 
@@ -17,7 +18,7 @@ public:
 
 
 	static std::vector<page*>   Books;
-
+	std::vector<UI_WINDOW* > windows;
 	int W, H;
 	bool alreadyInit = false;
 	std::vector<UI*> UIs;
@@ -27,9 +28,12 @@ public:
 	Game* current;
 	glm::mat4 ortho;
 	virtual void init(int Width, int Height, Game * g);
-	void Render(SpriteBatch* sp, TextRenderer* Text, GLSLProgram* pr);
+	virtual void Render(SpriteBatch* sp, TextRenderer* Text, GLSLProgram* pr);
+	virtual void Render_Text(TextRenderer* Text);
+	virtual void Update_UI(Mouse_info m);
+	
 	void Update(float dt);
-	void Update_UI(Mouse_info m);
+
 	void UI_Render(SpriteBatch* sp);
 	int toGo;
 	 
